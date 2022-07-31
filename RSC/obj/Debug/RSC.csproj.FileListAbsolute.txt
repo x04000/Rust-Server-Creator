@@ -1,0 +1,10 @@
+C:\Users\adria\source\repos\RSC\RSC\bin\Debug\RSC.exe.config
+C:\Users\adria\source\repos\RSC\RSC\bin\Debug\RSC.exe
+C:\Users\adria\source\repos\RSC\RSC\bin\Debug\RSC.pdb
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.csproj.AssemblyReference.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.csproj.SuggestedBindingRedirects.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.Properties.Resources.resources
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.csproj.GenerateResource.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.csproj.CoreCompileInputs.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.exe
+C:\Users\adria\source\repos\RSC\RSC\obj\Debug\RSC.pdb

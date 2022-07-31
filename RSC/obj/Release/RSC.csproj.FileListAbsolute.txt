@@ -1,0 +1,14 @@
+C:\Users\adria\source\repos\RSC\RSC\bin\Release\RSC.exe.config
+C:\Users\adria\source\repos\RSC\RSC\bin\Release\RSC.exe
+C:\Users\adria\source\repos\RSC\RSC\bin\Release\RSC.pdb
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.csproj.AssemblyReference.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.csproj.SuggestedBindingRedirects.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Form1.resources
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Properties.Resources.resources
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.csproj.GenerateResource.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.csproj.CoreCompileInputs.cache
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.exe
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.pdb
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Config.resources
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Installer.resources
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Plugins.resources
