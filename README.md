@@ -16,3 +16,5 @@
 <p>Easy to config</p>
 <p>Easy Plugin Manager</p>
 <p>Easy to Wipe & Full Wipe</p>
+<p>5 slots for create servers</p>
+<p>Servers profiles</p>
