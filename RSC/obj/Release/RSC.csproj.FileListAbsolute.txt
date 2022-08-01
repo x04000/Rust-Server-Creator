@@ -12,3 +12,4 @@ C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.pdb
 C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Config.resources
 C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Installer.resources
 C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.Plugins.resources
+C:\Users\adria\source\repos\RSC\RSC\obj\Release\RSC.ReleaseNotes.resources

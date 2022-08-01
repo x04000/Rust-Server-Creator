@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Net;
 
 namespace RSC
 {
@@ -17,7 +18,34 @@ namespace RSC
     {
         public static class Global
         {
+            public static string version;
             public static string configfile;
+        }
+        public void Updater()
+        {
+            WebRequest request = WebRequest.Create("https://raw.githubusercontent.com/x04000/Rust-Server-Creator/main/RSC/version");
+            request.Credentials = CredentialCache.DefaultCredentials;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            string responseFromServer = reader.ReadToEnd();
+            StreamWriter pw = new StreamWriter(@"RSC\lastestversion");
+            pw.WriteLine(responseFromServer);
+            pw.Close();
+            StreamReader src = new StreamReader(@"RSC\lastestversion");
+            string lastestversion = src.ReadLine();
+            src.Close();
+            File.Delete(@"RSC\lastestversion");
+            if (lastestversion == Global.version)
+            {
+                // RSC Is updated :D
+            }
+            else
+            {
+                MessageBox.Show("RSC is not updated :( | You can update them in Installer > Update RSC", "Rust Server Creator",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
         public void WriteDefaultValues()
         {
@@ -63,6 +91,8 @@ namespace RSC
         public Form1()
         {
             InitializeComponent();
+            Global.version = "v.1.2.1";
+            label4.Text = Global.version;
             if (Directory.Exists("RSC") == false) { Directory.CreateDirectory("RSC"); }
             if (File.Exists(@"RSC\config") == false) {
                 StreamWriter swc = new StreamWriter(@"RSC\config");
@@ -92,6 +122,22 @@ namespace RSC
             {
                 Global.configfile = @"RSC\config5";
                 WriteDefaultValues();
+            }
+            Updater();
+            if (File.Exists(@"RSC\Rust_Font.ttf") == false)
+            {
+                Process.Start("cmd.exe", @"/k @echo off && title RSC Font Downloader && powershell curl https://github.com/x04000/Rust-Server-Creator/raw/main/RSC/Rust_Font.ttf -o RSC\Rust_Font.ttf && exit");
+                Thread.Sleep(2000);
+                Process.Start(@"RSC\Rust_Font.ttf");
+                if (File.Exists(@"RSC\Valorant_Font.ttf") == false)
+                {
+                    Process.Start("cmd.exe", @"/k @echo off && title RSC Font Downloader && powershell curl https://github.com/x04000/Rust-Server-Creator/raw/main/RSC/Valorant_Font.ttf -o RSC\Valorant_Font.ttf && exit");
+                    Thread.Sleep(2000);
+                    Process.Start(@"RSC\Valorant_Font.ttf");
+                }
+                MessageBox.Show("Make you sure to have the fonts installed ;)", "Rust Server Creator",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
@@ -214,42 +260,55 @@ namespace RSC
             StreamReader src = new StreamReader(@"RSC\config");
             string configfile = src.ReadLine();
             src.Close();
-            if (Directory.Exists(@"rust_server\server\"+configfile+"") == true)
+            DialogResult wipeconfirm;
+            wipeconfirm = MessageBox.Show("Are you sure you want to full wipe "+configfile+"?", "Rust Server Creator",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+            if (wipeconfirm == DialogResult.Yes)
             {
-                string[] files = Directory.GetFiles(@"rust_server\server\"+configfile, "*.db");
-                foreach (var file in files)
+                if (Directory.Exists(@"rust_server\server\"+configfile+"") == true)
                 {
-                    File.Delete(file);
+                    string[] files = Directory.GetFiles(@"rust_server\server\"+configfile, "*.db");
+                    foreach (var file in files)
+                    {
+                        File.Delete(file);
+                    }
+                    string[] files1 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.db-*");
+                    foreach (var file1 in files1)
+                    {
+                        File.Delete(file1);
+                    }
+                    string[] files2 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.map");
+                    foreach (var file2 in files2)
+                    {
+                        File.Delete(file2);
+                    }
+                    string[] files3 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav");
+                    foreach (var file3 in files3)
+                    {
+                        File.Delete(file3);
+                    }
+                    string[] files4 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav.*");
+                    foreach (var file4 in files4)
+                    {
+                        File.Delete(file4);
+                    }
+                    MessageBox.Show(configfile+" has been fully wiped sucessfully :D", "Rust Server Creator",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
-                string[] files1 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.db-journal");
-                foreach (var file1 in files1)
+                else
                 {
-                    File.Delete(file1);
+                    MessageBox.Show(configfile+" folder doesn't exists :(", "Rust Server Creator",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
-                string[] files2 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.map");
-                foreach (var file2 in files2)
-                {
-                    File.Delete(file2);
-                }
-                string[] files3 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav");
-                foreach (var file3 in files3)
-                {
-                    File.Delete(file3);
-                }
-                string[] files4 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav.*");
-                foreach (var file4 in files4)
-                {
-                    File.Delete(file4);
-                }
-                MessageBox.Show(configfile+" has been fully wiped sucessfully :D", "Rust Server Creator",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(configfile+" folder doesn't exists :(", "Rust Server Creator",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Wipe operation cancelled :D", "Rust Server Creator",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
             }
         }
 
@@ -258,33 +317,52 @@ namespace RSC
             StreamReader src = new StreamReader(@"RSC\config");
             string configfile = src.ReadLine();
             src.Close();
-            if (Directory.Exists(@"rust_server\server\"+configfile+"") == true)
+            DialogResult wipeconfirm;
+            wipeconfirm = MessageBox.Show("Are you sure you want to wipe "+configfile+"?", "Rust Server Creator",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+            if (wipeconfirm == DialogResult.Yes)
             {
-                string[] files2 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.map");
-                foreach (var file2 in files2)
+                if (Directory.Exists(@"rust_server\server\"+configfile+"") == true)
                 {
-                    File.Delete(file2);
+                    string[] files2 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.map");
+                    foreach (var file2 in files2)
+                    {
+                        File.Delete(file2);
+                    }
+                    string[] files3 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav");
+                    foreach (var file3 in files3)
+                    {
+                        File.Delete(file3);
+                    }
+                    string[] files4 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav.*");
+                    foreach (var file4 in files4)
+                    {
+                        File.Delete(file4);
+                    }
+                    MessageBox.Show(configfile+" has been wiped sucessfully :D", "Rust Server Creator",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
-                string[] files3 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav");
-                foreach (var file3 in files3)
+                else
                 {
-                    File.Delete(file3);
+                    MessageBox.Show(configfile+" folder doesn't exists :(", "Rust Server Creator",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
-                string[] files4 = Directory.GetFiles(@"rust_server\server\"+configfile, "*.sav.*");
-                foreach (var file4 in files4)
-                {
-                    File.Delete(file4);
-                }
-                MessageBox.Show(configfile+" has been wiped sucessfully :D", "Rust Server Creator",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(configfile+" folder doesn't exists :(", "Rust Server Creator",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Wipe operation cancelled :D", "Rust Server Creator",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ReleaseNotes releasenotes = new ReleaseNotes();
+            openChildForm(releasenotes);
         }
     }
 }

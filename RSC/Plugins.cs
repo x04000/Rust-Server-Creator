@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace RSC
 {
@@ -57,6 +58,25 @@ namespace RSC
             Thread.Sleep(1000);
             File.Delete(enabledplugin);
             ListPlugins();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", @"rust_server\oxide\plugins");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string enabledplugin = comboBox1.Text;
+            string pluginselected = enabledplugin.Remove(0, 26);
+            string plugin = Regex.Replace(pluginselected, ".cs", "");
+            if (File.Exists(@"rust_server\oxide\config\"+plugin+".json") == true) { Process.Start(@"rust_server\oxide\config\"+plugin+".json"); }
+            else
+            {
+                MessageBox.Show("Plugin config isn't found :(", "Rust Server Creator",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
