@@ -3,13 +3,16 @@
 <p>Not affiliated with Facepunch, this is a Unofficial Server Creator</p>
 
 <h2>GUI</h2>
-<img src="https://user-images.githubusercontent.com/78761999/182053896-d73a141d-308c-46a3-8d63-5a5700e922d7.png">
+<img src="https://user-images.githubusercontent.com/78761999/182151947-497b637e-2cbf-4aa8-b6a3-90cc115298cf.png">
 
 <h2>Plugins manager</h2>
-<img src="https://user-images.githubusercontent.com/78761999/182054006-599a2adc-b8bb-4af9-9fc1-648a5b0e7ae0.png">
+<img src="https://user-images.githubusercontent.com/78761999/182152273-04931b3d-5228-472f-92ef-326c89ce4afb.png">
 
 <h2>Installer & Updater</h2>
-<img src="https://user-images.githubusercontent.com/78761999/182054067-bed292e0-b76d-445a-8d90-2ac94a43ed1a.png">
+<img src="https://user-images.githubusercontent.com/78761999/182152366-b00d3343-2cbe-4a66-9fe1-6da038c5df3b.png">
+
+<h2>Release Notes</h2>
+<img src="https://user-images.githubusercontent.com/78761999/182152532-e2176dc3-2e4b-43c8-b90d-106d85ecae1a.png">
 
 <h2>Functions:</h2>
 <p>Easy Installer & Updater</p>
