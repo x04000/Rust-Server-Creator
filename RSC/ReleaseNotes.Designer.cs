@@ -41,8 +41,9 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(417, 501);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "v.1.2.2\n[+] New section (Release Notes)\n[+] New function (Open Plugin Config)\n[+]" +
-    " Wipe warning\n[+] Updater Fixed\n[-] Correction of bugs";
+            this.richTextBox1.Text = "v.1.2.2.1\n[+] Updater Fully Fixed\n[+] Version Bug Fixed\n\nv.1.2.2\n[+] New section " +
+    "(Release Notes)\n[+] New function (Open Plugin Config)\n[+] Wipe warning\n[+] Updat" +
+    "er Fixed\n[-] Correction of bugs";
             // 
             // ReleaseNotes
             // 

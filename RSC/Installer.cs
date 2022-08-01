@@ -147,7 +147,7 @@ namespace RSC
             }
             else
             {
-                WebRequest requestr = WebRequest.Create("https://raw.githubusercontent.com/x04000/Rust-Server-Creator/main/RSC/version");
+                WebRequest requestr = WebRequest.Create("https://raw.githubusercontent.com/x04000/Rust-Server-Creator/main/RSC/release");
                 requestr.Credentials = CredentialCache.DefaultCredentials;
                 HttpWebResponse responser = (HttpWebResponse)requestr.GetResponse();
                 Stream dataStreamr = responser.GetResponseStream();

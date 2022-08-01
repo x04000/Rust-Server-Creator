@@ -91,7 +91,7 @@ namespace RSC
         public Form1()
         {
             InitializeComponent();
-            Global.version = "v.1.2.1";
+            Global.version = "v.1.2.2.1";
             label4.Text = Global.version;
             if (Directory.Exists("RSC") == false) { Directory.CreateDirectory("RSC"); }
             if (File.Exists(@"RSC\config") == false) {
