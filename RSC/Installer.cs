@@ -12,14 +12,28 @@ using System.Diagnostics;
 using System.Net;
 using System.Threading;
 using System.IO.Compression;
+using System.Drawing.Text;
 
 namespace RSC
 {
     public partial class Installer : Form
     {
+        public void RSCFont()
+        {
+            if (File.Exists(@"RSC\Rust_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Rust_Font.ttf");
+                label1.Font = new Font(pfc.Families[0], 38);
+                button1.Font = new Font(pfc.Families[0], 15);
+                button2.Font = new Font(pfc.Families[0], 15);
+                button3.Font = new Font(pfc.Families[0], 25);
+            }
+        }
         public Installer()
         {
             InitializeComponent();
+            RSCFont();
         }
 
         private void button1_Click(object sender, EventArgs e)

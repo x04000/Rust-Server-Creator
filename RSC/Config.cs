@@ -9,14 +9,58 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Drawing.Text;
 
 namespace RSC
 {
     public partial class Config : Form
     {
+        public void RSCFont()
+        {
+            if (File.Exists(@"RSC\Rust_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Rust_Font.ttf");
+                label1.Font = new Font(pfc.Families[0], 8);
+                label2.Font = new Font(pfc.Families[0], 8);
+                label3.Font = new Font(pfc.Families[0], 8);
+                label4.Font = new Font(pfc.Families[0], 8);
+                label5.Font = new Font(pfc.Families[0], 8);
+                label6.Font = new Font(pfc.Families[0], 8);
+                label7.Font = new Font(pfc.Families[0], 8);
+                label9.Font = new Font(pfc.Families[0], 8);
+                label10.Font = new Font(pfc.Families[0], 8);
+                label11.Font = new Font(pfc.Families[0], 8);
+                label12.Font = new Font(pfc.Families[0], 8);
+                label13.Font = new Font(pfc.Families[0], 8);
+                label14.Font = new Font(pfc.Families[0], 8);
+                button1.Font = new Font(pfc.Families[0], 9);
+                button2.Font = new Font(pfc.Families[0], 9);
+                button3.Font = new Font(pfc.Families[0], 9);
+            }
+            if (File.Exists(@"RSC\Valorant_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Valorant_Font.ttf");
+                name.Font = new Font(pfc.Families[0], 8);
+                description.Font = new Font(pfc.Families[0], 8);
+                url.Font = new Font(pfc.Families[0], 8);
+                header.Font = new Font(pfc.Families[0], 8);
+                serverseed.Font = new Font(pfc.Families[0], 8);
+                size.Font = new Font(pfc.Families[0], 8);
+                maxplayers.Font = new Font(pfc.Families[0], 8);
+                ip.Font = new Font(pfc.Families[0], 8);
+                port.Font = new Font(pfc.Families[0], 8);
+                rconip.Font = new Font(pfc.Families[0], 8);
+                rconport.Font = new Font(pfc.Families[0], 8);
+                rconpassword.Font = new Font(pfc.Families[0], 8);
+                map.Font = new Font(pfc.Families[0], 8);
+            }
+        }
         public Config()
         {
             InitializeComponent();
+            RSCFont();
             StreamReader src = new StreamReader(@"RSC\config");
             string configfile = src.ReadLine();
             src.Close();

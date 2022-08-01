@@ -11,6 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Drawing.Text;
 
 namespace RSC
 {
@@ -31,9 +32,31 @@ namespace RSC
                 comboBox2.Items.Add(file2);
             }
         }
+        public void RSCFont()
+        {
+            if (File.Exists(@"RSC\Rust_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Rust_Font.ttf");
+                label1.Font = new Font(pfc.Families[0], 8);
+                label2.Font = new Font(pfc.Families[0], 8);
+                button1.Font = new Font(pfc.Families[0], 20);
+                button2.Font = new Font(pfc.Families[0], 20);
+                button3.Font = new Font(pfc.Families[0], 20);
+                button4.Font = new Font(pfc.Families[0], 20);
+            }
+            if (File.Exists(@"RSC\Valorant_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Valorant_Font.ttf");
+                comboBox1.Font = new Font(pfc.Families[0], 8);
+                comboBox2.Font = new Font(pfc.Families[0], 8);
+            }
+        }
         public Plugins()
         {
             InitializeComponent();
+            RSCFont();
             ListPlugins();
         }
 

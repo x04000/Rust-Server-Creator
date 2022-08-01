@@ -11,6 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading;
 using System.Net;
+using System.Drawing.Text;
 
 namespace RSC
 {
@@ -88,10 +89,37 @@ namespace RSC
             sw.WriteLine("Procedural Map");
             sw.Close();
         }
+        public void RSCFont()
+        {
+            if (File.Exists(@"RSC\Rust_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Rust_Font.ttf");
+                label1.Font = new Font(pfc.Families[0], 38);
+                label2.Font = new Font(pfc.Families[0], 8);
+                label3.Font = new Font(pfc.Families[0], 8);
+                button1.Font = new Font(pfc.Families[0], 9);
+                button2.Font = new Font(pfc.Families[0], 7);
+                button3.Font = new Font(pfc.Families[0], 7);
+                button4.Font = new Font(pfc.Families[0], 7);
+                button5.Font = new Font(pfc.Families[0], 7);
+                button6.Font = new Font(pfc.Families[0], 9);
+                button7.Font = new Font(pfc.Families[0], 7);
+                panel.Font = new Font(pfc.Families[0], 8);
+            }
+            if (File.Exists(@"RSC\Valorant_Font.ttf") == true)
+            {
+                PrivateFontCollection pfc = new PrivateFontCollection();
+                pfc.AddFontFile(@"RSC\Valorant_Font.ttf");
+                comboBox1.Font = new Font(pfc.Families[0], 12);
+                label4.Font = new Font(pfc.Families[0], 8, FontStyle.Bold);
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
-            Global.version = "v.1.2.2.1";
+            Global.version = "v.1.2.2.2";
             label4.Text = Global.version;
             if (Directory.Exists("RSC") == false) { Directory.CreateDirectory("RSC"); }
             if (File.Exists(@"RSC\config") == false) {
@@ -123,22 +151,17 @@ namespace RSC
                 Global.configfile = @"RSC\config5";
                 WriteDefaultValues();
             }
-            Updater();
             if (File.Exists(@"RSC\Rust_Font.ttf") == false)
             {
                 Process.Start("cmd.exe", @"/k @echo off && title RSC Font Downloader && powershell curl https://github.com/x04000/Rust-Server-Creator/raw/main/RSC/Rust_Font.ttf -o RSC\Rust_Font.ttf && exit");
-                Thread.Sleep(2000);
-                Process.Start(@"RSC\Rust_Font.ttf");
-                if (File.Exists(@"RSC\Valorant_Font.ttf") == false)
-                {
-                    Process.Start("cmd.exe", @"/k @echo off && title RSC Font Downloader && powershell curl https://github.com/x04000/Rust-Server-Creator/raw/main/RSC/Valorant_Font.ttf -o RSC\Valorant_Font.ttf && exit");
-                    Thread.Sleep(2000);
-                    Process.Start(@"RSC\Valorant_Font.ttf");
-                }
-                MessageBox.Show("Make you sure to have the fonts installed ;)", "Rust Server Creator",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
             }
+            if (File.Exists(@"RSC\Valorant_Font.ttf") == false)
+            {
+                Process.Start("cmd.exe", @"/k @echo off && title RSC Font Downloader && powershell curl https://github.com/x04000/Rust-Server-Creator/raw/main/RSC/Valorant_Font.ttf -o RSC\Valorant_Font.ttf && exit");
+                Thread.Sleep(2000);
+            }
+            Updater();
+            RSCFont();
         }
 
         private Form activeForm = null;
