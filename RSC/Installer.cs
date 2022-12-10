@@ -13,6 +13,7 @@ using System.Net;
 using System.Threading;
 using System.IO.Compression;
 using System.Drawing.Text;
+using System.Runtime.Remoting.Lifetime;
 
 namespace RSC
 {
@@ -40,11 +41,13 @@ namespace RSC
         {
             if (File.Exists("steamcmd.exe") == false)
             {
-                string remoteUri = "https://download941.mediafire.com/xsaqk3538uag/rcfqek1oj8g7u8q/steamcmd.exe";
-                string fileName = "steamcmd.exe", myStringWebResource = null;
-                WebClient myWebClient = new WebClient();
-                myStringWebResource = remoteUri + fileName;
-                myWebClient.DownloadFile(myStringWebResource, fileName);
+                Process.Start("cmd.exe", @"/k @echo off && title RSC SteamCMD Downloader && powershell curl https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -o steamcmd.zip && exit");
+                while (File.Exists("steamcmd.exe") == false)
+                {
+                    Thread.Sleep(5000);
+                    Process.Start("cmd.exe", "/k @echo off && title RSC - SteamCMD Installer && tar -xf steamcmd.zip && pause && exit");
+                    Thread.Sleep(1000);
+                }
             }
             Process.Start("cmd.exe", "/k @echo off && title RSC - Updater && start steamcmd.exe +login anonymous +force_install_dir rust_server +app_update 258550 -beta validate +quit && exit");
             if (Directory.Exists("rust_server") == false)

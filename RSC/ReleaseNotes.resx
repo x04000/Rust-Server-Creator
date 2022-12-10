@@ -118,7 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>v.1.2.2.2
+    <value>v.1.2.2.3
+[+] SteamCMD Downloader fixed
+[+] SteamCMD Installer fixed
+[-] Correction of bugs
+
+v.1.2.2.2
 [+] Font bug fixed
 
 v.1.2.2.1
