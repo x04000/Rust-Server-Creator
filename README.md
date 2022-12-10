@@ -1,6 +1,7 @@
 # Rust Server Creator
 <p>Create your own Rust servers easy :)</p>
 <p>Not affiliated with Facepunch, this is a Unofficial Server Creator</p>
+<p>If you have any bug with the UI just install the fonts (they are in RSC\[Rust/Valorant]_Font.ttf)</p>
 
 <h2>GUI</h2>
 <img src="https://user-images.githubusercontent.com/78761999/182151947-497b637e-2cbf-4aa8-b6a3-90cc115298cf.png">
